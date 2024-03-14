@@ -7,7 +7,6 @@ from classes import *
 
 FILE = 'products.json'
 PRODUCTS_JSON_FILE = os.path.join('data', FILE)
-product_objects = []
 
 
 def load_json_file(path):
@@ -24,20 +23,10 @@ def load_json_file(path):
 def create_category_objects(category_list):
     category_objects = []
     for ct_object in category_list:
-        product_objects_list = create_product_objects(ct_object.get("products"))
-        ob_c = Category(ct_object.get("name"), ct_object.get("description"), product_objects_list)
+        ob_c = Category(ct_object.get("name"), ct_object.get("description"), ct_object.get("products"))
         category_objects.append(ob_c)
     return category_objects
 
-
-def create_product_objects(product_list):
-    category_product_list = []
-    for pr_object in product_list:
-        ob_p = Product(pr_object.get("name"), pr_object.get("description"), pr_object.get("price"),
-            pr_object.get("quantity"))
-        product_objects.append(ob_p)
-        category_product_list.append(ob_p)
-    return category_product_list
 
 def main(path):
     category_list = load_json_file(path)
@@ -45,7 +34,8 @@ def main(path):
         category_objects = create_category_objects(category_list)
         print(category_objects[0].get_products())
         print(category_objects[1].get_products())
-        print(len(product_objects))
+        print(Category.category_quantity)
+        print(Product.product_quantity)
         return True
     else:
         return None
