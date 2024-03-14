@@ -12,6 +12,11 @@ class Category:
         self.products = products
 
 
+    def get_products(self):
+        """Возвращает плательщика."""
+        return self.products
+
+
 class Product:
     name: str
     description: str
