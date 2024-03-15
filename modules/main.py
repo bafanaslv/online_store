@@ -3,10 +3,10 @@
 import json
 import os
 from classes import *
-
+from config import ROOT_DIR
 
 FILE = 'products.json'
-PRODUCTS_JSON_FILE = os.path.join('data', FILE)
+PRODUCTS_JSON_FILE = os.path.join(ROOT_DIR, 'data', FILE)
 
 
 def load_json_file(path):
@@ -39,7 +39,7 @@ def main(path):
     if category_list is not None:
         category_objects = create_category_objects(category_list)
         print(f'Количество категорий продуктов - {Category.category_quantity}')
-        print(f'Количество наименований продуктов - {Product.product_quantity}')
+        print(f'Количество наименований продуктов - {Product.product_names_quantity}')
         return True
     else:
         return None

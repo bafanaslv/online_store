@@ -1,5 +1,5 @@
 import pytest
-from main import Category, Product
+from modules.classes import Category, Product
 
 test_category_objects = []
 category_list = [
