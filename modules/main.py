@@ -2,7 +2,7 @@
 
 import json
 import os
-from modules.classes import Category
+from modules.class_category import Category
 from config import ROOT_DIR
 
 FILE = 'products.json'

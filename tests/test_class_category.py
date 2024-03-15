@@ -1,5 +1,5 @@
 import pytest
-from modules.classes import Category
+from modules.class_category import Category
 
 category_list = [
     {
@@ -19,14 +19,14 @@ category_list = [
 
 @pytest.fixture
 def test_category_object():
-    """Создается экземпляр класса Category и параллельно список экземпляров класса Product (products)."""
+    """Создается экземпляр класса Category."""
     return Category(category_list[0].get("name"),
                     category_list[0].get("description"),
                     category_list[0].get("products"))
 
 
 def test_create_category_objects(test_category_object):
-    """Проверка методов и аттрибутов классов Category & Product."""
+    """Проверка аттрибутов классов Category."""
     assert test_category_object.name == "Телевизоры"
     assert test_category_object.description == "Современный телевизор, который позволяет наслаждаться просмотром"
     assert type(test_category_object.products) is list
