@@ -1,5 +1,5 @@
 import pytest
-from modules.classes import Product
+from modules.class_product import Product
 
 product_list = [
             {
