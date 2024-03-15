@@ -2,7 +2,7 @@
 
 import json
 import os
-from classes import *
+from modules.classes import Category
 from config import ROOT_DIR
 
 FILE = 'products.json'
@@ -25,8 +25,7 @@ def load_json_file(path):
 
 
 def create_category_objects(category_list):
-    """Функция предназначена получения списка категорий продуктов. Параллельно формируется
-    список наименований продуктов product_objects."""
+    """Функция предназначена получения списка категорий продуктов."""
     category_objects = []
     for ct_object in category_list:
         ob_c = Category(ct_object.get("name"), ct_object.get("description"), ct_object.get("products"))
@@ -39,7 +38,7 @@ def main(path):
     if category_list is not None:
         category_objects = create_category_objects(category_list)
         print(f'Количество категорий продуктов - {Category.category_quantity}')
-        print(f'Количество наименований продуктов - {Product.product_names_quantity}')
+        print(f'Количество наименований уникальных продуктов - {Category.product_names_quantity}')
         return True
     else:
         return None
