@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b10b9994-e48c-40e7-8bc6-91c6ef40931a" name="Changes" comment="Исправление по замечаниям." />
+    <list default="true" id="b10b9994-e48c-40e7-8bc6-91c6ef40931a" name="Changes" comment="Исправление по замечаниям.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,20 +26,6 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;bafanaslv&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="b1f36b1b-fe8d-4bf7-8bc6-e679e811a9e6" />
-        <option name="url" value="https://github.com/bafanaslv/online_store.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -229,15 +217,7 @@
       <option name="project" value="LOCAL" />
       <updated>1710483798944</updated>
     </task>
-    <task id="LOCAL-00007" summary="Исправление по замечаниям.">
-      <option name="closed" value="true" />
-      <created>1710493037417</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1710493037417</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
