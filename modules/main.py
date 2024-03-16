@@ -13,7 +13,6 @@ def load_json_file(path):
     """Загрузка json - файла интернет магазина."""
     if not os.path.exists(path):
         print(f'Файл {FILE} отсуствует или указан неверный путь к нему !\n')
-        return None
     else:
         with open(path, 'r', encoding='utf-8') as file:
             try:
@@ -21,7 +20,6 @@ def load_json_file(path):
                 return json.load(file)
             except json.decoder.JSONDecodeError:
                 print(f'Неверная структура файла {FILE} !')
-                return None
 
 
 def create_category_objects(category_list):
@@ -40,8 +38,6 @@ def main(path):
         print(f'Количество категорий продуктов - {Category.category_quantity}')
         print(f'Количество наименований уникальных продуктов - {Category.product_names_quantity}')
         return True
-    else:
-        return None
 
 
 if __name__ == '__main__':
