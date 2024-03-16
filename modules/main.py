@@ -37,7 +37,6 @@ def main(path):
         category_objects = create_category_objects(category_list)
         print(f'Количество категорий продуктов - {Category.category_quantity}')
         print(f'Количество наименований уникальных продуктов - {Category.product_names_quantity}')
-        return True
 
 
 if __name__ == '__main__':
