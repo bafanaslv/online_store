@@ -10,7 +10,7 @@ def load_json_file(path, file_name):
     else:
         with open(path, 'r', encoding='utf-8') as file:
             try:
-                print(f'Файл {file_name} успешно загружен  !')
+                print(f'Файл {file_name} успешно загружен !')
                 return json.load(file)
             except json.decoder.JSONDecodeError:
                 print(f'Неверная структура файла {file_name} !')
