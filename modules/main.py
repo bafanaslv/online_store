@@ -16,6 +16,5 @@ def main(path, file_name):
         print(f'Количество категорий продуктов - {Category.category_quantity}')
         print(f'Количество наименований уникальных продуктов - {Category.product_names_quantity}')
 
-
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)

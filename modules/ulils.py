@@ -1,6 +1,7 @@
 import json
 import os
 from modules.class_category import Category
+from modules.class_product import Product
 
 
 def load_json_file(path, file_name):
@@ -19,7 +20,11 @@ def load_json_file(path, file_name):
 def create_category_objects(category_list):
     """Функция предназначена получения списка категорий продуктов."""
     category_objects = []
+    n = 0
     for ct_object in category_list:
-        ob_c = Category(ct_object.get("name"), ct_object.get("description"), ct_object.get("products"))
+        ob_c = Category(ct_object.get("name"), ct_object.get("description"),
+                        [Product(**product) for product in ct_object.get("products")])
         category_objects.append(ob_c)
+        print(len(category_objects[n].products))
+        n += 1
     return category_objects
