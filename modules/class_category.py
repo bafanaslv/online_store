@@ -13,9 +13,9 @@ class Category:
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
-        self.products = products
+        self._products = products
         Category.category_quantity += 1
-        Category.product_names_quantity += len(self.products)
+        Category.product_names_quantity += len(self._products)
 
     def __repr__(self):
         return self.name
