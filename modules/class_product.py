@@ -17,5 +17,13 @@ class Product:
         name, description, price, quantity = str_product.split(', ')
         return cls(name, description, price, quantity)
 
+    @property
+    def get_product(self):
+        return self.price
+
+    @get_product.setter
+    def get_product(self, price):
+        self.price = price
+
     def __repr__(self):
         return f'{self.name} {self.price}'

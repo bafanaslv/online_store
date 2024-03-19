@@ -28,6 +28,7 @@ class Category:
     def add_product(self, str_product):
         ob_pr = Product.new_product(str_product)
         self.__products.append(ob_pr)
+        Category.product_names_quantity += 1
 
     def __repr__(self):
         return self.name
