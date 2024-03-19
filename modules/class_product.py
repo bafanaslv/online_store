@@ -12,5 +12,19 @@ class Product:
         self.price = price
         self.quantity = quantity
 
-    def __repr__(self):
-        return f'{self.name}, цена: {self.price}, количество: {self.quantity}'
+    @classmethod
+    def new_product(cls, str_product):
+        name, description, price, quantity = str_product.split(', ')
+        return cls(name, description, price, quantity)
+
+
+    @property
+    def price(self):
+        return self.price
+
+    @price.setter
+    def price(self, price):
+        if price >= 0:
+            self.price = price
+        else:
+            print('Цена введена некорректно!')

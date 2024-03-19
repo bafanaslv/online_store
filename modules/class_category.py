@@ -9,7 +9,6 @@ class Category:
     category_quantity = 0
     product_names_quantity = 0
 
-
     def __init__(self, name, description, products):
         self.name = name
         self.description = description
@@ -17,14 +16,12 @@ class Category:
         Category.category_quantity += 1
         Category.product_names_quantity += len(self.__products)
 
-
     @property
-    def get_product(self):
-        prod_list = []
+    def product(self):
+        prod_list = ''
         for prod in self.__products:
-            prod_list.append(f'{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.')
+            prod_list += f'{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n'
         return prod_list
-
 
     def __repr__(self):
         return self.name
