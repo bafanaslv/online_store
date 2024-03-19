@@ -1,3 +1,5 @@
+from modules.class_product import Product
+
 class Category:
     """Класс предназначен описания и поведения категорий продуктов. name - наименование,
     description - описание, products - список продуктов по данной категории,
@@ -22,6 +24,10 @@ class Category:
         for prod in self.__products:
             prod_list += f'{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n'
         return prod_list
+
+    def add_product(self, str_product):
+        ob_pr = Product.new_product(str_product)
+        self.__products.append(ob_pr)
 
     def __repr__(self):
         return self.name

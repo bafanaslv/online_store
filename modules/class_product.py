@@ -17,14 +17,5 @@ class Product:
         name, description, price, quantity = str_product.split(', ')
         return cls(name, description, price, quantity)
 
-
-    @property
-    def price(self):
-        return self.price
-
-    @price.setter
-    def price(self, price):
-        if price >= 0:
-            self.price = price
-        else:
-            print('Цена введена некорректно!')
+    def __repr__(self):
+        return f'{self.name} {self.price}'
