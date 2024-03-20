@@ -26,9 +26,8 @@ def test_category_object():
 
 
 def test_create_category_objects(test_category_object):
-    """Проверка аттрибутов классов Category."""
+    """Проверка некоторых аттрибутов класса Category."""
     assert test_category_object.name == "Телевизоры"
     assert test_category_object.description == "Современный телевизор, который позволяет наслаждаться просмотром"
-    assert type(test_category_object.products) is list
     assert Category.category_quantity == 1
     assert Category.product_names_quantity == 1

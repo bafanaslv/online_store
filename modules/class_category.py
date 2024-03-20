@@ -1,8 +1,9 @@
 from modules.class_product import Product
 
+
 class Category:
-    """Класс предназначен описания и поведения категорий продуктов. name - наименование,
-    description - описание, products - список продуктов по данной категории,
+    """Класс предназначен описания и поведения категорий товаров. name - наименование,
+    description - описание, products - список товаров по данной категории,
     category_quantity - количество категорий."""
     name: str
     description: str
@@ -20,7 +21,7 @@ class Category:
 
     @property
     def product(self):
-        """геттер для вывода списка продуктов для данной категории товара"""
+        """Геттер для вывода списка товаров для данной категории"""
         prod_list = ''
         for prod in self.__products:
             prod_list += f'{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n'
@@ -53,7 +54,7 @@ class Category:
 
     @staticmethod
     def search_product(prod_name, products):
-        """Статический метод для поиска в списке объектов продуктов по наименование товара.
+        """Статический метод для поиска в списке объектов товаров по наименованию.
         Возвращает найденный объект или None если поиск неудачен."""
         for product in products:
             if prod_name == product.name:

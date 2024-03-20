@@ -1,6 +1,6 @@
 class Product:
-    """Класс предназначен описания и поведения номенклатуры продуктов. name - наименование,
-    description - описание, price - цена, quantity - количество продукта."""
+    """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
+    description - описание, price - цена, quantity - количество товара."""
     name: str
     description: str
     price: float
@@ -14,7 +14,7 @@ class Product:
 
     @classmethod
     def new_product(cls, list_prod):
-        """метод формирует новый объект товар из поступившего списка list_prod с атрибутами тоывара."""
+        """Метод формирует новый объект товар из поступившего списка list_prod с атрибутами тоывара."""
         return cls(list_prod[0], list_prod[2], list_prod[2], list_prod[3])
 
     @property

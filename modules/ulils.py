@@ -19,15 +19,11 @@ def load_json_file(path, file_name):
 
 def create_category_objects(category_list):
     """Функция предназначена получения списка категорий товаров. Параллельно формируется список
-    объектов товаров cat_prod_objects для аттрибута priducts."""
+    объектов товаров cat_prod_objects для аттрибута products."""
     # category_objects - список объектов категорий
-    # cat_prod_list - список продуктов для текущей категории
     category_objects = []
     for category_object in category_list:
-        cat_prod_list = []
-        for product in category_object.get("products"):
-            object_product = Product(**product)
-            cat_prod_list.append(object_product)
-        object_category = Category(category_object.get("name"), category_object.get("description"), cat_prod_list)
+        object_category = Category(category_object.get("name"), category_object.get("description"),
+                                   [Product(**product) for product in category_object.get("products")])
         category_objects.append(object_category)
     return category_objects

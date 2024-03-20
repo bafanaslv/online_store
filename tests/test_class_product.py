@@ -21,7 +21,7 @@ def test_product_object():
 
 
 def test_create_category_objects(test_product_object):
-    """Проверка инициализацииy & Product."""
+    """Проверка инициализацииy класса Product."""
     assert test_product_object.name == "55\" QLED 4K"
     assert test_product_object.description == "Фоновая подсветка"
     assert test_product_object.price == 123000
