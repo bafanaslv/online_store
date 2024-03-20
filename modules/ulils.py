@@ -3,8 +3,6 @@ import os
 from modules.class_category import Category
 from modules.class_product import Product
 
-# product_objects - общий список объектов товаров
-product_objects = []
 
 def load_json_file(path, file_name):
     """Загрузка json - файла интернет магазина."""
@@ -20,18 +18,16 @@ def load_json_file(path, file_name):
 
 
 def create_category_objects(category_list):
-    """Функция предназначена получения списка категорий продуктов."""
+    """Функция предназначена получения списка категорий товаров. Параллельно формируется список
+    объектов товаров cat_prod_objects для аттрибута priducts."""
     # category_objects - список объектов категорий
-    # cat_prod_objects - список продуктов для текущей категории
-    cat_prod_objects = []
+    # cat_prod_list - список продуктов для текущей категории
     category_objects = []
-    for ct_object in category_list:
-        i = 0
-        for product in ct_object.get("products"):
+    for category_object in category_list:
+        cat_prod_list = []
+        for product in category_object.get("products"):
             object_product = Product(**product)
-            product_objects.append(object_product)
-            cat_prod_objects.append(product_objects[i])
-            i += 1
-        object_category = Category(ct_object.get("name"), ct_object.get("description"), cat_prod_objects)
+            cat_prod_list.append(object_product)
+        object_category = Category(category_object.get("name"), category_object.get("description"), cat_prod_list)
         category_objects.append(object_category)
-    return category_objects, product_objects
+    return category_objects
