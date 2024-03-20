@@ -14,6 +14,7 @@ class Product:
 
     @classmethod
     def new_product(cls, list_prod):
+        """метод формирует новый объект товар из поступившего списка list_prod с атрибутами тоывара."""
         return cls(list_prod[0], list_prod[2], list_prod[2], list_prod[3])
 
     @property
@@ -22,10 +23,7 @@ class Product:
 
     @get_product.setter
     def get_product(self, price):
-        if price >= 0:
-            self.price = price
-        else:
-            print(f'Неверная цена продукта {price} !')
+        self.price = price
 
     def __repr__(self):
         return f'{self.name} {self.price}'
