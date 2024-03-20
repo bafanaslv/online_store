@@ -1,5 +1,6 @@
 from modules.class_product import Product
 
+
 class Category:
     """Класс предназначен описания и поведения категорий продуктов. name - наименование,
     description - описание, products - список продуктов по данной категории,
@@ -26,14 +27,30 @@ class Category:
         return prod_list
 
     def add_product(self, str_product):
-        ob_pr = Product.new_product(str_product)
-        self.__products.append(ob_pr)
-        Category.product_names_quantity += 1
+        prod_attr_list = list(str_product.split(": "))
+        found_product = self.search_product(prod_attr_list[0], self.__products)
+        if found_product is None:
+            ob_pr = Product.new_product(prod_attr_list)
+            self.__products.append(ob_pr)
+            Category.product_names_quantity += 1
+        else:
+            found_product.quantity += int(prod_attr_list[3])
+            if float(prod_attr_list[2]) <= 0:
+                print(f'Введена неверная цена: {prod_attr_list[2]}')
+            else:
+                if float(prod_attr_list[2]) >= found_product.price:
+                    Product.get_product = float(prod_attr_list[2])
+                    found_product.price = float(prod_attr_list[2])
+                else:
+                    if input('Вы согласны на понижение цены товара ?') == 'y':
+                        Product.get_product = float(prod_attr_list[2])
+                        found_product.price = float(prod_attr_list[2])
 
     @staticmethod
-    def search_products(products, str_product):
-        pass
-
+    def search_product(prod_name, products):
+        for product in products:
+            if prod_name == product.name:
+                return product
 
     def __repr__(self):
         return self.name

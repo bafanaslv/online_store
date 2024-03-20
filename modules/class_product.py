@@ -13,9 +13,8 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, str_product):
-        name, description, price, quantity = str_product.split(', ')
-        return cls(name, description, price, quantity)
+    def new_product(cls, list_prod):
+        return cls(list_prod[0], list_prod[2], list_prod[2], list_prod[3])
 
     @property
     def get_product(self):
@@ -23,7 +22,10 @@ class Product:
 
     @get_product.setter
     def get_product(self, price):
-        self.price = price
+        if price >= 0:
+            self.price = price
+        else:
+            print(f'Неверная цена продукта {price} !')
 
     def __repr__(self):
         return f'{self.name} {self.price}'
