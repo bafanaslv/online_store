@@ -38,13 +38,12 @@ class Category:
             if float(prod_attr_list[2]) <= 0:
                 print(f'Введена неверная цена: {prod_attr_list[2]}')
             else:
-                if float(prod_attr_list[2]) >= found_product.price:
+                if float(prod_attr_list[2]) != found_product.price:
+                    if float(prod_attr_list[2]) < found_product.price:
+                        if input('Вы согласны на понижение цены товара ?') == 'n':
+                            return
                     Product.get_product = float(prod_attr_list[2])
                     found_product.price = float(prod_attr_list[2])
-                else:
-                    if input('Вы согласны на понижение цены товара ?') == 'y':
-                        Product.get_product = float(prod_attr_list[2])
-                        found_product.price = float(prod_attr_list[2])
 
     @staticmethod
     def search_product(prod_name, products):
