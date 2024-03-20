@@ -18,7 +18,6 @@ def main(path, file_name):
     print(category_objects[0].product)
     print(f'Количество категорий продуктов - {Category.category_quantity}')
     print(f'Количество наименований уникальных продуктов - {Category.product_names_quantity}')
-    #print(ob)
 
 
 if __name__ == '__main__':

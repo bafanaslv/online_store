@@ -30,5 +30,10 @@ class Category:
         self.__products.append(ob_pr)
         Category.product_names_quantity += 1
 
+    @staticmethod
+    def search_products(products, str_product):
+        pass
+
+
     def __repr__(self):
         return self.name
