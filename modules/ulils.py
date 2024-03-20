@@ -1,6 +1,7 @@
 import json
 import os
 from modules.class_category import Category
+from modules.class_product import Product
 
 
 def load_json_file(path, file_name):
@@ -10,16 +11,19 @@ def load_json_file(path, file_name):
     else:
         with open(path, 'r', encoding='utf-8') as file:
             try:
-                print(f'Файл {file_name} успешно загружен  !')
+                print(f'Файл {file_name} успешно загружен !')
                 return json.load(file)
             except json.decoder.JSONDecodeError:
                 print(f'Неверная структура файла {file_name} !')
 
 
 def create_category_objects(category_list):
-    """Функция предназначена получения списка категорий продуктов."""
+    """Функция предназначена получения списка категорий товаров. Параллельно формируется список
+    объектов товаров cat_prod_objects для аттрибута products."""
+    # category_objects - список объектов категорий
     category_objects = []
-    for ct_object in category_list:
-        ob_c = Category(ct_object.get("name"), ct_object.get("description"), ct_object.get("products"))
-        category_objects.append(ob_c)
+    for category_object in category_list:
+        object_category = Category(category_object.get("name"), category_object.get("description"),
+                                   [Product(**product) for product in category_object.get("products")])
+        category_objects.append(object_category)
     return category_objects
