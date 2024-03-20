@@ -1,6 +1,5 @@
 from modules.class_product import Product
 
-
 class Category:
     """Класс предназначен описания и поведения категорий продуктов. name - наименование,
     description - описание, products - список продуктов по данной категории,
@@ -27,18 +26,19 @@ class Category:
             prod_list += f'{prod.name}, {prod.price} руб. Остаток: {prod.quantity} шт.\n'
         return prod_list
 
-    def add_product(self, str_product):
+    def add_product(self, product_objects, str_product):
         """Метод предназначен для добавление нового товара в категорию. Если наимнования товара совпадает с имеющимся
         товаром, то увеличивается количество и при необходимости корректируется цена товара."""
         # str_product - строка с атрибутами товара разделенные с символами ": ".
         # prod_attr_list - список с атрибутами товара, prod_attr_list[0] - наименование товара.
         prod_attr_list = list(str_product.split(": "))
-        found_product = self.search_product(prod_attr_list[0], self.__products)
+        found_product = self.search_product(prod_attr_list[0], product_objects)
         if found_product is None:
             # если товар не нашелся в списке, то с помощью класса Product получаем новый экземпляр и добавляем его
             # в список товаров текущей категории.
             new_pr = Product.new_product(prod_attr_list)
             self.__products.append(new_pr)
+            product_objects.append(new_pr)
             Category.product_names_quantity += 1
         else:
             # если товар нашелся, то увеличиваем его количество и, при необходимости, корректируем цену.
@@ -50,7 +50,7 @@ class Category:
                     if float(prod_attr_list[2]) < found_product.price:
                         if input('Вы согласны на понижение цены товара ?\n') == 'n':
                             return
-                    Product.get_product = float(prod_attr_list[2])
+#                    Product.get_product = float(prod_attr_list[2])
                     found_product.price = float(prod_attr_list[2])
 
     @staticmethod
