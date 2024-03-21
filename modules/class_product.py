@@ -9,7 +9,7 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
     @classmethod
@@ -18,12 +18,15 @@ class Product:
         return cls(dict_product["name"], dict_product["description"], dict_product["price"], dict_product["quantity"])
 
     @property
-    def get_product(self):
-        return self.price
+    def product_price(self):
+        return self.__price
 
-    @get_product.setter
-    def get_product(self, price):
-        self.price = price
+    @product_price.setter
+    def product_price(self, price):
+        if price <= 0:
+            print(f'Неправильная цена товара: {price}\n')
+        else:
+            self.__price = price
 
     def __repr__(self):
         return f'{self.name} {self.price}'
