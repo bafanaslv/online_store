@@ -13,9 +13,9 @@ class Product:
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, list_prod):
-        """Метод формирует новый объект товар из поступившего списка list_prod с атрибутами тоывара."""
-        return cls(list_prod[0], list_prod[2], list_prod[2], list_prod[3])
+    def new_product(cls, dict_product):
+        """Метод формирует новый объект товар из поступившего словаря dict_product с атрибутами товара."""
+        return cls(dict_product["name"], dict_product["description"], dict_product["price"], dict_product["quantity"])
 
     @property
     def get_product(self):
