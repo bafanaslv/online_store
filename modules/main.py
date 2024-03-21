@@ -13,11 +13,13 @@ PRODUCTS_JSON_FILE = os.path.join(ROOT_DIR, 'data', FILE)
 def main(path, file_name):
     # Функция load_json_file загружает json- файл.
     # Функция create_category_objects формирует список категорий товаров category_objects.
+    # dict_new_product - словарь с атрибутами нового товара
     category_list = load_json_file(path, file_name)
     category_objects = []
     if category_list is not None:
         category_objects = create_category_objects(category_list)
-    Category.add_product(category_objects[0], 'Iphone 15: 512GB, Gray space: 200000.0: 6')
+    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6}
+    Category.add_product(category_objects[0], dict_new_product)
     print(category_objects[0].product)
     print(f'Количество категорий товарв - {Category.category_quantity}')
     print(f'Количество наименований уникальных товаров - {Category.product_names_quantity}')

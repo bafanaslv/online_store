@@ -9,21 +9,24 @@ class Product:
     def __init__(self, name, description, price, quantity):
         self.name = name
         self.description = description
-        self.price = price
+        self.__price = price
         self.quantity = quantity
 
     @classmethod
-    def new_product(cls, list_prod):
-        """Метод формирует новый объект товар из поступившего списка list_prod с атрибутами тоывара."""
-        return cls(list_prod[0], list_prod[2], list_prod[2], list_prod[3])
+    def new_product(cls, dict_product):
+        """Метод формирует новый объект товар из поступившего словаря dict_product с атрибутами товара."""
+        return cls(dict_product["name"], dict_product["description"], dict_product["price"], dict_product["quantity"])
 
     @property
-    def get_product(self):
-        return self.price
+    def product_price(self):
+        return self.__price
 
-    @get_product.setter
-    def get_product(self, price):
-        self.price = price
+    @product_price.setter
+    def product_price(self, price):
+        if price <= 0:
+            print(f'Неправильная цена товара: {price}\n')
+        else:
+            self.__price = price
 
     def __repr__(self):
         return f'{self.name} {self.price}'
