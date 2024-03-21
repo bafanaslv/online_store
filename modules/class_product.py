@@ -28,5 +28,5 @@ class Product:
         else:
             self.__price = price
 
-    def __repr__(self):
-        return f'{self.name} {self.price}'
+    def __str__(self):
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'

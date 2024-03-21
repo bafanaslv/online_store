@@ -24,7 +24,7 @@ class Category:
         """Геттер для вывода списка товаров для данной категории"""
         prod_list = ''
         for prod in self.__products:
-            prod_list += f'{prod.name}, {prod.product_price} руб. Остаток: {prod.quantity} шт.\n'
+            prod_list += str(prod)+'\n'
         return prod_list
 
     def add_product(self, dict_new_product):
@@ -55,5 +55,12 @@ class Category:
             if prod_name == product.name:
                 return product
 
-    def __repr__(self):
-        return self.name
+    def __str__(self):
+        return f'{self.name}, количество продуктов: {len(self)} шт.'
+
+    def __len__(self):
+        """Метод посчитывает общий остаток продуктов определенной категории на складе."""
+        quantity_products = 0
+        for product in self.__products:
+            quantity_products += product.quantity
+        return quantity_products
