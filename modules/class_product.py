@@ -15,7 +15,7 @@ class Product:
     @classmethod
     def new_product(cls, dict_product):
         """Метод формирует новый объект товар из поступившего словаря dict_product с атрибутами товара."""
-        return cls(dict_product["name"], dict_product["description"], dict_product["price"], dict_product["quantity"])
+        return cls(**dict_product)
 
     @property
     def product_price(self):
@@ -28,5 +28,8 @@ class Product:
         else:
             self.__price = price
 
-    def __repr__(self):
-        return f'{self.name} {self.price}'
+    def __str__(self):
+        return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
+
+    def __add__(self, other):
+        return self.quantity * self.__price + other.quantity * other.__price
