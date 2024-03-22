@@ -2,6 +2,7 @@
 
 import os
 from modules.class_category import Category
+from modules.class_iter_pruducts import IterProducts
 from config import ROOT_DIR
 from ulils import load_json_file, create_category_objects
 
@@ -18,13 +19,27 @@ def main(path, file_name):
     category_objects = []
     if category_list is not None:
         category_objects = create_category_objects(category_list)
+
+    # Добавление нового товара в категорию.
     dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6}
     Category.add_product(category_objects[0], dict_new_product)
+
+    # Отработка геттера product класса Catofory.
     print(category_objects[0].product)
+
+    # Отработка метода __str__ класса Catofory.
     print(category_objects[0])
+
+    # Суммирование экземпляров товаров
     print(category_objects[0].product_objects[0] + category_objects[0].product_objects[1])
-    print(f'Количество категорий товаров - {Category.category_quantity}')
-    print(f'Количество наименований уникальных товаров - {Category.product_names_quantity}')
+
+    # Вывод атрибутов класса Catogory.
+    print(f'Количество категорий товаров: {Category.category_quantity}')
+    print(f'Количество наименований уникальных товаров: {Category.product_names_quantity}\n')
+
+    # Перебор продуктов в категории category_objects[0]
+    for product in IterProducts(category_objects[0]):
+        print(product)
 
 
 if __name__ == '__main__':
