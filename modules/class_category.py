@@ -20,6 +20,11 @@ class Category:
         Category.product_names_quantity += len(self.__products)
 
     @property
+    def product_objects(self):
+        """Геттер для вывода списка товаров для данной категории"""
+        return self.__products
+
+    @property
     def product(self):
         """Геттер для вывода списка товаров для данной категории"""
         prod_list = ''
