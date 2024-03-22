@@ -22,8 +22,9 @@ def main(path, file_name):
     Category.add_product(category_objects[0], dict_new_product)
     print(category_objects[0].product)
     print(category_objects[0])
-    print(category_objects[0].__product[0] + category_objects[0].__product[1])
-    print(f'Количество категорий товарв - {Category.category_quantity}')
+    print(category_objects[0].product[0])
+    print(category_objects[0].product[0] + category_objects[0].product[1])
+    print(f'Количество категорий товаров - {Category.category_quantity}')
     print(f'Количество наименований уникальных товаров - {Category.product_names_quantity}')
 
 
