@@ -33,3 +33,26 @@ class Product:
 
     def __add__(self, other):
         return self.quantity * self.__price + other.quantity * other.__price
+
+
+class SmartPhone(Product):
+    """Класс предназначен для описания и поведения номенклатуры смартфонов и является дочерним от класса Product
+    В описание добавились свойства: capacity - производительность, model - модель, memory - объем оперативной памяти,
+     color - цвет."""
+    def __init__(self, name, description, price, quantity, capacity, model, memory, color):
+        super().__init__(name, description, price, quantity)
+        self.capacity = capacity
+        self.model = model
+        self.memory = memory
+        self.color = color
+
+
+class LawnGrass(Product):
+    """Класс предназначен для описания и поведения номенклатуры газонной травы и является дочерним от класса Product
+    В описание добавились свойства: country - страна-производитель, germination - срок прорастания, color - цвет."""
+    def __init__(self, name, description, price, quantity, country, germination, color):
+        super().__init__(name, description, price, quantity)
+        self.man_caountry = country
+        self.germination = germination
+        self.color = color
+
