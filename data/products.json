@@ -7,21 +7,33 @@
         "name": "Samsung Galaxy C23 Ultra",
         "description": "256GB, Серый цвет, 200MP камера",
         "price": 180000.0,
-        "quantity": 5
+        "quantity": 5,
+        "color": "Серый",
+        "capacity": 128.5,
+        "model": "C23 Ultra",
+        "memory": 64
       },
       {
         "name": "Iphone 15",
         "description": "512GB, Gray space",
         "price": 210000.0,
-        "quantity": 8
+        "quantity": 8,
+        "color": "Gray space",
+        "capacity": 200.5,
+        "model": "15",
+        "memory": 64
       },
       {
         "name": "Xiaomi Redmi Note 11",
         "description": "1024GB, Синий",
         "price": 31000.0,
-        "quantity": 14
+        "quantity": 14,
+        "color": "Синий",
+        "capacity": 150.5,
+        "model": "Note 11",
+        "memory": 64
       }
-    ]
+  ]
   },
   {
     "name": "Телевизоры",
@@ -31,7 +43,8 @@
         "name": "55\" QLED 4K",
         "description": "Фоновая подсветка",
         "price": 123000.0,
-        "quantity": 7
+        "quantity": 7,
+        "color": "Черный"
       }
     ]
   }
