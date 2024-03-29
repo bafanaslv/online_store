@@ -1,6 +1,7 @@
 # Программа предназначена для работы интернет магазина.
 
 import os
+from modules.class_product import LawnGrass
 from modules.class_category import Category
 from modules.class_iter_pruducts import IterProducts
 from config import ROOT_DIR
@@ -30,9 +31,12 @@ def main(path, file_name):
     # Отработка метода __str__ класса Catofory.
     print(category_objects[0])
 
-    # Суммирование экземпляров товаров
+    # Суммирование экземпляров товаров одного класса.
     print(category_objects[0].product_objects[0] + category_objects[0].product_objects[1])
 
+    # Суммирование экземпляров товаров разных классов.
+    new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8, "зеленый", "Россия", 2)
+    print(category_objects[0].product_objects[0] + new_lawngrass)
 
     # Вывод атрибутов класса Catogory.
     print(f'Количество категорий товаров: {Category.category_quantity}')

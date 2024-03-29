@@ -1,7 +1,7 @@
 import json
 import os
 from modules.class_category import Category
-from modules.class_product import Product, SmartPhone
+from modules.class_product import Product, SmartPhone, LawnGrass
 
 
 def load_json_file(path, file_name):
@@ -25,9 +25,12 @@ def create_category_objects(category_list):
     for category_object in category_list:
         if category_object["name"] == "Смартфоны":
             object_category = Category(category_object.get("name"), category_object.get("description"),
-                                       [Product(**product) for product in category_object.get("products")])
+                                       [SmartPhone(**product) for product in category_object.get("products")])
+        elif category_object["name"] == "Трава газонная":
+            object_category = Category(category_object.get("name"), category_object.get("description"),
+                                       [LawnGrass(**product) for product in category_object.get("products")])
         else:
             object_category = Category(category_object.get("name"), category_object.get("description"),
-                                       [SmartPhone(**product) for product in category_object.get("products")])
+                                       [Product(**product) for product in category_object.get("products")])
         category_objects.append(object_category)
     return category_objects
