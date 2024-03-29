@@ -42,7 +42,7 @@ class Category:
             # в список товаров текущей категории.
             new_product = Product.new_product(dict_new_product)
             if not isinstance(new_product, Product):
-                raise TypeError("Добавлять можно только объекты Product или его наследников.")
+                raise TypeError("Добавлять можно только объекты одного класса или его наследников.")
             self.__products.append(new_product)
             Category.product_names_quantity += 1
         else:

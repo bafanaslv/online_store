@@ -14,19 +14,22 @@ category_list = [
                 "name": "Samsung Galaxy C23 Ultra",
                 "description": "256GB, Серый цвет, 200MP камера",
                 "price": 180000,
-                "quantity": 5
+                "quantity": 5,
+                "color": "Серый"
             },
             {
                 "name": "Iphone 15",
                 "description": "512GB, Gray space",
                 "price": 210000,
-                "quantity": 8
+                "quantity": 8,
+                "color": "Gray space"
             },
             {
                 "name": "Xiaomi Redmi Note 11",
                 "description": "1024GB, Синий",
                 "price": 31000,
-                "quantity": 14
+                "quantity": 14,
+                "color": "Синий"
             }
         ]
     }
