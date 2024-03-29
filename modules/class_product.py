@@ -1,16 +1,18 @@
 class Product:
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
-    description - описание, price - цена, quantity - количество товара."""
+    description - описание, price - цена, quantity - количество товара, color - цвет."""
     name: str
     description: str
     price: float
     quantity: int
+    color: str
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, color):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
+        self.color = color
 
     @classmethod
     def new_product(cls, dict_product):
@@ -34,24 +36,22 @@ class Product:
     def __add__(self, other):
         if type(self) is type(other):
             return self.quantity * self.__price + other.quantity * other.__price
-        raise ValueError('Продукты должны быть из одного класса !')
+        raise ValueError
 
 
 class SmartPhone(Product):
     """Класс предназначен для описания и поведения номенклатуры смартфонов и является дочерним от класса Product
     В описание добавились свойства: capacity - производительность, model - модель, memory - объем оперативной памяти,
      color - цвет."""
-    capacity: int
+    capacity: float
     model: str
     memory: int
-    color: str
 
-    def __init__(self, name, description, price, quantity, capacity, model, memory, color):
-        super().__init__(name, description, price, quantity)
+    def __init__(self, name, description, price, quantity, color, capacity, model, memory):
+        super().__init__(name, description, price, quantity, color)
         self.capacity = capacity
         self.model = model
         self.memory = memory
-        self.color = color
 
 
 class LawnGrass(Product):
@@ -59,10 +59,8 @@ class LawnGrass(Product):
     В описание добавились свойства: country - страна-производитель, germination - срок прорастания, color - цвет."""
     country: str
     germination: int
-    color: str
 
-    def __init__(self, name, description, price, quantity, country, germination, color):
-        super().__init__(name, description, price, quantity)
+    def __init__(self, name, description, price, quantity, color, country, germination):
+        super().__init__(name, description, price, quantity, color)
         self.country = country
         self.germination = germination
-        self.color = color

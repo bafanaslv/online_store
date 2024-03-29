@@ -33,6 +33,7 @@ def main(path, file_name):
     # Суммирование экземпляров товаров
     print(category_objects[0].product_objects[0] + category_objects[0].product_objects[1])
 
+
     # Вывод атрибутов класса Catogory.
     print(f'Количество категорий товаров: {Category.category_quantity}')
     print(f'Количество наименований уникальных товаров: {Category.product_names_quantity}\n')

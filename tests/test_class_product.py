@@ -5,22 +5,24 @@ prod1 = {
     "name": "Samsung Galaxy C23 Ultra",
     "description": "256GB, Серый цвет, 200MP камера",
     "price": 180000.0,
-    "quantity": 5
+    "quantity": 5,
+    "color": "Серый"
 }
 prod2 = {
     "name": "Iphone 15",
     "description": "512GB, Gray space",
     "price": 210000.0,
-    "quantity": 8
+    "quantity": 8,
+    "color": "Gray"
 }
 prod3 = {
     "name": "Трава",
     "description": "Газонная",
     "price": 2100.0,
     "quantity": 8,
+    "color": "зеленый",
     "country": "Россия",
-    "germination": 2,
-    "color": "зеленый"
+    "germination": 2
 }
 
 
@@ -30,8 +32,8 @@ def test_product_object1():
     return Product(prod1["name"],
                    prod1["description"],
                    prod1["price"],
-                   prod1["quantity"])
-
+                   prod1["quantity"],
+                   prod1["color"])
 
 @pytest.fixture
 def test_product_object2():
@@ -39,7 +41,8 @@ def test_product_object2():
     return Product(prod2["name"],
                    prod2["description"],
                    prod2["price"],
-                   prod2["quantity"])
+                   prod2["quantity"],
+                   prod3["color"])
 
 
 @pytest.fixture
@@ -49,9 +52,10 @@ def test_product_object3():
                      prod3["description"],
                      prod3["price"],
                      prod3["quantity"],
+                     prod3["color"],
                      prod3["country"],
-                     prod3["germination"],
-                     prod3["color"])
+                     prod3["germination"])
+
 
 
 @pytest.fixture
