@@ -58,7 +58,6 @@ class Category:
         """Статический метод для поиска в списке объектов товаров по наименованию.
         Возвращает найденный объект или None если поиск неудачен."""
         for product in products:
-            print(type(product))
             if prod_name == product.name:
                 return product
 
