@@ -35,15 +35,14 @@ class Category:
     def add_product(self, dict_new_product):
         """Метод предназначен для добавление нового товара в категорию. Если наимнования товара совпадает с имеющимся
         товаром, то увеличивается количество и при необходимости корректируется цена товара."""
-        # str_product - строка с атрибутами товара разделенные с символами ": ".
-        # dict_new_product - словарь с атрибутами нового товара
+        # dict_new_product - словарь с атрибутами нового товара.
         found_product = self.search_product(dict_new_product["name"], self.__products)
         if found_product is None:
             # если товар не нашелся в списке, то с помощью класса Product получаем новый экземпляр и добавляем его
             # в список товаров текущей категории.
             new_product = Product.new_product(dict_new_product)
             if not isinstance(new_product, Product):
-                raise TypeError("Добавлять можно только объекты Product или его наследников")
+                raise TypeError("Добавлять можно только объекты Product или его наследников.")
             self.__products.append(new_product)
             Category.product_names_quantity += 1
         else:
@@ -59,6 +58,7 @@ class Category:
         """Статический метод для поиска в списке объектов товаров по наименованию.
         Возвращает найденный объект или None если поиск неудачен."""
         for product in products:
+            print(type(product))
             if prod_name == product.name:
                 return product
 
