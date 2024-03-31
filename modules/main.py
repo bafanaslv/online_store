@@ -1,7 +1,7 @@
 # Программа предназначена для работы интернет магазина.
 
 import os
-from modules.class_product import LawnGrass
+from modules.class_product import Product, LawnGrass
 from modules.class_category import Category
 from modules.class_iter_pruducts import IterProducts
 from config import ROOT_DIR
@@ -22,8 +22,9 @@ def main(path, file_name):
         category_objects = create_category_objects(category_list)
 
     # Добавление нового товара в категорию.
-    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6}
-    Category.add_product(category_objects[0], dict_new_product)
+    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
+    new_product = Product.new_product(dict_new_product)
+    Category.add_product(category_objects[0], new_product)
 
     # Отработка геттера product класса Catofory.
     print(category_objects[0].product)
@@ -35,7 +36,8 @@ def main(path, file_name):
     print(category_objects[0].product_objects[0] + category_objects[0].product_objects[1])
 
     # Суммирование экземпляров товаров разных классов.
-    new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8, "зеленый", "Россия", 2)
+    new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8,
+                              "зеленый", "Россия", 2)
     #print(category_objects[0].product_objects[0] + new_lawngrass)
 
     # Вывод атрибутов класса Catogory.
