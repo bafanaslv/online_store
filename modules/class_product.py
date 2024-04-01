@@ -5,7 +5,11 @@ from modules.class_mixin_repr import MixinRepr
 class Productabc(ABC):
     """ Абстарактный класс для класса Products и его дочерних классов."""
     @abstractmethod
-    def new_product(self):
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def new_product(self, dict_productt):
         pass
 
     @staticmethod
@@ -36,6 +40,7 @@ class Product(Productabc, MixinRepr):
         self.__price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
         super().__repr__()
 
     @classmethod
