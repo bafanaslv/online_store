@@ -1,4 +1,31 @@
-class Product:
+from abc import ABC, abstractmethod
+from modules.class_mixin_repr import MixinRepr
+
+
+class Productabc(ABC):
+    """ Абстарактный класс для класса Products и его дочерних классов."""
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def new_product(self, dict_productt):
+        pass
+
+    @staticmethod
+    def product_price(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
+class Product(Productabc, MixinRepr):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
     description - описание, price - цена, quantity - количество товара, color - цвет."""
     name: str
@@ -13,6 +40,8 @@ class Product:
         self.__price = price
         self.quantity = quantity
         self.color = color
+        super().__init__()
+        super().__repr__()
 
     @classmethod
     def new_product(cls, dict_product):
@@ -36,7 +65,7 @@ class Product:
     def __add__(self, other):
         if isinstance(other, type(self)):
             return self.quantity * self.__price + other.quantity * other.__price
-        raise TypeError('Складывать можно только продукты одинаковой категории !')
+        raise TypeError('Складывать можно только продукты одиной категории !')
 
 
 class SmartPhone(Product):
@@ -48,10 +77,10 @@ class SmartPhone(Product):
     memory: int
 
     def __init__(self, name, description, price, quantity, color, capacity, model, memory):
-        super().__init__(name, description, price, quantity, color)
         self.capacity = capacity
         self.model = model
         self.memory = memory
+        super().__init__(name, description, price, quantity, color)
 
 
 class LawnGrass(Product):
@@ -61,6 +90,6 @@ class LawnGrass(Product):
     germination: int
 
     def __init__(self, name, description, price, quantity, color, country, germination):
-        super().__init__(name, description, price, quantity, color)
         self.country = country
         self.germination = germination
+        super().__init__(name, description, price, quantity, color)

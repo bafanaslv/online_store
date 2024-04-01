@@ -1,6 +1,6 @@
 import pytest
 from modules.class_category import Category
-from modules.class_product import Product
+from modules.class_product import Product, LawnGrass
 
 # new_lawngrass - словарь продукта Газонная трава.
 new_lawngrass = {
@@ -22,6 +22,12 @@ def test_category_object():
                              123000, 7, "Черный")])
 
 
+@pytest.fixture()
+def test_new_lawngrass():
+    return LawnGrass("Трава", "Газонная", 2100.0, 8,
+                     "зеленый", "Россия", 2)
+
+
 def test_create_category_objects(test_category_object):
     """Проверка некоторых аттрибутов класса Category."""
     assert test_category_object.name == "Телевизоры"
@@ -30,7 +36,7 @@ def test_create_category_objects(test_category_object):
     assert Category.product_names_quantity == 1
 
 
-def test_category_add_product(test_category_object):
+def test_category_add_product(test_category_object, test_new_lawngrass):
     """Проверка добавления товара из класса Газонная трава в список объектов класса Продукты."""
     with pytest.raises(TypeError):
-        test_category_object.add_product(new_lawngrass)
+        test_category_object.add_product(test_new_lawngrass)
