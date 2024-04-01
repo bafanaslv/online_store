@@ -1,4 +1,13 @@
-class Product:
+from abc import ABC, abstractmethod
+
+
+class Productabc(ABC):
+    @abstractmethod
+    def new_product(self):
+        pass
+
+    def
+class Product(Productabc):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
     description - описание, price - цена, quantity - количество товара, color - цвет."""
     name: str
@@ -36,7 +45,7 @@ class Product:
     def __add__(self, other):
         if isinstance(other, type(self)):
             return self.quantity * self.__price + other.quantity * other.__price
-        raise TypeError('Складывать можно только продукты одинаковой категории !')
+        raise TypeError('Складывать можно только продукты одиной категории !')
 
 
 class SmartPhone(Product):
