@@ -22,7 +22,7 @@ def main(path, file_name):
         category_objects = create_category_objects(category_list)
 
     # Добавление нового товара в категорию.
-    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
+    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 210000.0, "quantity": 6, "color": "Белый"}
     new_product = Product.new_product(dict_new_product)
     Category.add_product(category_objects[0], new_product)
 

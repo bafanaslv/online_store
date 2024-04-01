@@ -6,8 +6,33 @@ class Productabc(ABC):
     def new_product(self):
         pass
 
-    def
-class Product(Productabc):
+    @staticmethod
+    def product_price(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __add__(self, other):
+        pass
+
+
+class MixinRepr:
+    def __init__(self, *args, **kwargs):
+        print(repr(self))
+
+    def __repr__(self):
+        rep = f'{self.__class__.__name__}('
+        for key in self.__dict__:
+            if type(self.__dict__[key]) is str:
+                rep += f'"{self.__dict__[key]}", '
+            else:
+                rep += f'{self.__dict__[key]}, '
+        print(rep.rstrip()[:-1] + ')')
+
+class Product(Productabc, MixinRepr):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
     description - описание, price - цена, quantity - количество товара, color - цвет."""
     name: str
@@ -22,6 +47,7 @@ class Product(Productabc):
         self.__price = price
         self.quantity = quantity
         self.color = color
+        super().__repr__()
 
     @classmethod
     def new_product(cls, dict_product):
@@ -42,13 +68,16 @@ class Product(Productabc):
     def __str__(self):
         return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
 
+    def prod_info(self):
+        return f'{self.__class__.__name__}({self.name}, {self.description}, {self.product_price}, {self.quantity})'
+
     def __add__(self, other):
         if isinstance(other, type(self)):
             return self.quantity * self.__price + other.quantity * other.__price
         raise TypeError('Складывать можно только продукты одиной категории !')
 
 
-class SmartPhone(Product):
+class SmartPhone(Product, MixinRepr):
     """Класс предназначен для описания и поведения номенклатуры смартфонов и является дочерним от класса Product
     В описание добавились свойства: capacity - производительность, model - модель, memory - объем оперативной памяти,
      color - цвет."""
@@ -57,19 +86,22 @@ class SmartPhone(Product):
     memory: int
 
     def __init__(self, name, description, price, quantity, color, capacity, model, memory):
-        super().__init__(name, description, price, quantity, color)
         self.capacity = capacity
         self.model = model
         self.memory = memory
+        super().__init__(name, description, price, quantity, color)
+
+    def prod_info(self):
+        return f'{self.__class__.__name__}({self.name}, {self.description}, {self.product_price}, {self.quantity})'
 
 
-class LawnGrass(Product):
+class LawnGrass(Product, MixinRepr):
     """Класс предназначен для описания и поведения номенклатуры газонной травы и является дочерним от класса Product
     В описание добавились свойства: country - страна-производитель, germination - срок прорастания, color - цвет."""
     country: str
     germination: int
 
     def __init__(self, name, description, price, quantity, color, country, germination):
-        super().__init__(name, description, price, quantity, color)
         self.country = country
         self.germination = germination
+        super().__init__(name, description, price, quantity, color)
