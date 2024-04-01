@@ -56,9 +56,6 @@ class Product(Productabc, MixinRepr):
     def __str__(self):
         return f'{self.name}, {self.__price} руб. Остаток: {self.quantity} шт.'
 
-    def prod_info(self):
-        return f'{self.__class__.__name__}({self.name}, {self.description}, {self.product_price}, {self.quantity})'
-
     def __add__(self, other):
         if isinstance(other, type(self)):
             return self.quantity * self.__price + other.quantity * other.__price
@@ -78,9 +75,6 @@ class SmartPhone(Product):
         self.model = model
         self.memory = memory
         super().__init__(name, description, price, quantity, color)
-
-    def prod_info(self):
-        return f'{self.__class__.__name__}({self.name}, {self.description}, {self.product_price}, {self.quantity})'
 
 
 class LawnGrass(Product):

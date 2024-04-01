@@ -2,7 +2,7 @@ from modules.class_product import Product
 from modules.class_mixin_repr import MixinRepr
 
 
-class Category():
+class Category:
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
     category_quantity - количество категорий."""
@@ -16,6 +16,7 @@ class Category():
         self.name = name
         self.description = description
         self.__products = products
+        self.__repr__()
         Category.category_quantity += 1
         Category.product_names_quantity += len(self.__products)
 
@@ -68,3 +69,14 @@ class Category():
         for product in self.__products:
             quantity_products += product.quantity
         return quantity_products
+
+    def __repr__(self):
+        rep_str = f'{self.__class__.__name__}('
+        for key in self.__dict__:
+            if type(self.__dict__[key]) is str:
+                rep_str += f'"{self.__dict__[key]}", '
+            elif type(self.__dict__[key]) is int:
+                rep_str += f'{self.__dict__[key]}, '
+            elif type(self.__dict__[key]) is float:
+                rep_str += f'{self.__dict__[key]}, '
+        print(f'"Создан объект: " {rep_str.rstrip()[:-1]})')

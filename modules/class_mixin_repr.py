@@ -5,10 +5,10 @@ class MixinRepr:
         print(repr(self))
 
     def __repr__(self):
-        rep = f'{self.__class__.__name__}('
+        rep_str = f'{self.__class__.__name__}('
         for key in self.__dict__:
             if type(self.__dict__[key]) is str:
-                rep += f'"{self.__dict__[key]}", '
+                rep_str += f'"{self.__dict__[key]}", '
             else:
-                rep += f'{self.__dict__[key]}, '
-        print(rep.rstrip()[:-1] + ')')
+                rep_str += f'{self.__dict__[key]}, '
+        print(f'"Создан объект: " {rep_str.rstrip()[:-1]})')
