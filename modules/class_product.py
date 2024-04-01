@@ -3,6 +3,7 @@ from modules.class_mixin_repr import MixinRepr
 
 
 class Productabc(ABC):
+    """ Абстарактный класс для класса Products и его дочерних классов."""
     @abstractmethod
     def new_product(self):
         pass

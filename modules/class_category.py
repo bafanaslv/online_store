@@ -1,8 +1,22 @@
+from abc import ABC, abstractmethod
 from modules.class_product import Product
 from modules.class_mixin_repr import MixinRepr
 
 
-class Category(MixinRepr):
+class Ordercat(ABC):
+    @abstractmethod
+    def __str__(self):
+        pass
+
+    @abstractmethod
+    def __len__(self):
+        pass
+
+class Order(Ordercat):
+    def __init__(self, quantity):
+        self.quantity = quantity
+
+class Category(Ordercat, MixinRepr):
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
     category_quantity - количество категорий."""
