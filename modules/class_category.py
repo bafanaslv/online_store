@@ -40,7 +40,8 @@ class Category(MixinRepr):
         found_product = self.search_product(new_product.name, self.__products)
         if found_product is None:
             # если товар не нашелся в списке, то добавляем его в список товаров текущей категории.
-            if not isinstance(new_product, Product):
+#            if not isinstance(new_product, Product):
+            if type(new_product) != type(Product):
                 raise TypeError("Добавлять можно только объекты одного класса или его наследников.")
             self.__products.append(new_product)
             Category.product_names_quantity += 1
