@@ -1,14 +1,14 @@
 from modules.class_product import Product
+from modules.class_mixin_repr import MixinRepr
 
 
-class Category:
+class Category():
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
     category_quantity - количество категорий."""
     name: str
     description: str
     products: list
-
     category_quantity = 0
     product_names_quantity = 0
 

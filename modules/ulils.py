@@ -3,7 +3,6 @@ import os
 from modules.class_category import Category
 from modules.class_product import Product, SmartPhone, LawnGrass
 
-
 def load_json_file(path, file_name):
     """Загрузка json - файла интернет магазина."""
     if not os.path.exists(path):

@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from modules.class_mixin_repr import MixinRepr
 
 
 class Productabc(ABC):
@@ -18,19 +19,6 @@ class Productabc(ABC):
     def __add__(self, other):
         pass
 
-
-class MixinRepr:
-    def __init__(self, *args, **kwargs):
-        print(repr(self))
-
-    def __repr__(self):
-        rep = f'{self.__class__.__name__}('
-        for key in self.__dict__:
-            if type(self.__dict__[key]) is str:
-                rep += f'"{self.__dict__[key]}", '
-            else:
-                rep += f'{self.__dict__[key]}, '
-        print(rep.rstrip()[:-1] + ')')
 
 class Product(Productabc, MixinRepr):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
@@ -77,7 +65,7 @@ class Product(Productabc, MixinRepr):
         raise TypeError('Складывать можно только продукты одиной категории !')
 
 
-class SmartPhone(Product, MixinRepr):
+class SmartPhone(Product):
     """Класс предназначен для описания и поведения номенклатуры смартфонов и является дочерним от класса Product
     В описание добавились свойства: capacity - производительность, model - модель, memory - объем оперативной памяти,
      color - цвет."""
@@ -95,7 +83,7 @@ class SmartPhone(Product, MixinRepr):
         return f'{self.__class__.__name__}({self.name}, {self.description}, {self.product_price}, {self.quantity})'
 
 
-class LawnGrass(Product, MixinRepr):
+class LawnGrass(Product):
     """Класс предназначен для описания и поведения номенклатуры газонной травы и является дочерним от класса Product
     В описание добавились свойства: country - страна-производитель, germination - срок прорастания, color - цвет."""
     country: str
