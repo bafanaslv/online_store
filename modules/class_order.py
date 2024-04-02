@@ -10,6 +10,7 @@ class Order(Categoryabc):
         self.amount = product.price * product.quantity
 
     def add_product(self, product):
+        print(self.__name__)
         print(f'Куплен товар: {product.name}, {product.quantity} '
               f'шт. на сумму - {product.product_price * product.quantity}')
 
