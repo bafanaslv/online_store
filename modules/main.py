@@ -39,7 +39,7 @@ def main(path, file_name):
     # Суммирование экземпляров товаров разных классов.
     new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8,
                               "зеленый", "Россия", 2)
-    # print(category_objects[0].product_objects[0] + new_lawngrass)
+    print(category_objects[0].product_objects[0] + new_lawngrass)
 
     # Вывод атрибутов класса Catogory.
     print(f'Количество категорий товаров: {Category.category_quantity}')
@@ -54,6 +54,7 @@ def main(path, file_name):
     new_product = SmartPhone.new_product(dict_new_product)
     prod = Order(new_product)
     print(prod.__str__())
+
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
