@@ -16,7 +16,6 @@ class Category(MixinRepr):
         self.name = name
         self.description = description
         self.__products = products
-        # super().__init__()
         super().__repr__()
         Category.category_quantity += 1
         Category.product_names_quantity += len(self.__products)

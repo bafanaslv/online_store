@@ -2,9 +2,6 @@
 # Миксин универсальный и выводит только строковые и числовые атрибуты. Списки не выводит.
 
 class MixinRepr:
-    def __init__(self, *args):
-        print(repr(self))
-
     def __repr__(self):
         rep_str = f'{self.__class__.__name__}('
         for key in self.__dict__:
