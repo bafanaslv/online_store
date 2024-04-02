@@ -1,8 +1,9 @@
 from modules.class_product import Product
 from modules.class_mixin_repr import MixinRepr
+from abstract_classes import Categoryabc
 
 
-class Category(MixinRepr):
+class Category(Categoryabc, MixinRepr):
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
     category_quantity - количество категорий."""
@@ -36,7 +37,7 @@ class Category(MixinRepr):
     def add_product(self, new_product):
         """Метод предназначен для добавление нового товара в категорию. Если наимнования товара совпадает с имеющимся
         товаром, то увеличивается количество и при необходимости корректируется цена товара."""
-        # dict_new_product - словарь с атрибутами нового товара.
+        # new_product - экземпляр нового товара.
         found_product = self.search_product(new_product.name, self.__products)
         if found_product is None:
             # если товар не нашелся в списке, то добавляем его в список товаров текущей категории.
