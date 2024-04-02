@@ -3,6 +3,7 @@
 import os
 from modules.class_product import Product, LawnGrass
 from modules.class_category import Category
+from modules.class_order import Order
 from modules.class_iter_pruducts import IterProducts
 from config import ROOT_DIR
 from ulils import load_json_file, create_category_objects
@@ -48,6 +49,9 @@ def main(path, file_name):
     for product in IterProducts(category_objects[0]):
         print(product)
 
+    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
+    new_product = Product.new_product(dict_new_product)
+    Order.add_product(Product, new_product)
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
