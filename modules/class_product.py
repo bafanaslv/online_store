@@ -1,28 +1,5 @@
-from abc import ABC, abstractmethod
 from modules.class_mixin_repr import MixinRepr
-
-
-class Productabc(ABC):
-    """ Абстарактный класс для класса Products и его дочерних классов."""
-    @abstractmethod
-    def __init__(self):
-        pass
-
-    @abstractmethod
-    def new_product(self, dict_productt):
-        pass
-
-    @staticmethod
-    def product_price(self):
-        pass
-
-    @abstractmethod
-    def __str__(self):
-        pass
-
-    @abstractmethod
-    def __add__(self, other):
-        pass
+from abstract_classes import Productabc
 
 
 class Product(Productabc, MixinRepr):
