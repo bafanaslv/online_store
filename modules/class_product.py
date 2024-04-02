@@ -40,7 +40,6 @@ class Product(Productabc, MixinRepr):
         self.__price = price
         self.quantity = quantity
         self.color = color
-        super().__init__()
         super().__repr__()
 
     @classmethod
