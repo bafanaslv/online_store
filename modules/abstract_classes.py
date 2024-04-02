@@ -35,5 +35,5 @@ class Categoryabc(ABC):
         pass
 
     @abstractmethod
-    def add_product(self, product):
+    def __str__(self):
         pass
