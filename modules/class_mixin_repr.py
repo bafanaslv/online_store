@@ -14,4 +14,4 @@ class MixinRepr:
                 rep_str += f'{self.__dict__[key]}, '
             elif type(self.__dict__[key]) is float:
                 rep_str += f'{self.__dict__[key]}, '
-        print(f'"Создан объект: " {rep_str.rstrip()[:-1]})')
+        print(f'Создан объект:  {rep_str.rstrip()[:-1]})')
