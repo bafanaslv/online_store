@@ -52,7 +52,8 @@ def main(path, file_name):
     dict_new_product = {"name": "Iphone 14", "description": "512GB", "price": 200000.0, "quantity": 6,
                         "color": "Белый", "capacity": 190, "model": "14", "memory": 32}
     new_product = SmartPhone.new_product(dict_new_product)
-    Order.add_product(SmartPhone, new_product)
+    prod = Order(new_product)
+    print(prod.__str__())
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
