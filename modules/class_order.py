@@ -8,7 +8,7 @@ class Order(Categoryabc):
         self.amount = product.product_price * product.quantity
 
     def __str__(self):
-        return f'Куплен товар: {self.__product.name}, {self.__product.quantity} шт. на сумму - {self.amount}'
+        return f'Куплен товар: {self.__product.name}, {self.__product.quantity} шт. на сумму - {self.amount}\n'
 
     def __len__(self):
         pass
