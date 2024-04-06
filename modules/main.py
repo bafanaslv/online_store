@@ -5,6 +5,7 @@ from modules.class_product import SmartPhone, Product, LawnGrass
 from modules.class_category import Category
 from modules.class_order import Order
 from modules.class_iter_pruducts import IterProducts
+from modules.class_iter_category import IterCategory
 from config import ROOT_DIR
 from ulils import load_json_file, create_category_objects
 
@@ -23,6 +24,7 @@ def main(path, file_name):
         category_objects = create_category_objects(category_list)
 
     # Добавление нового товара в категорию.
+    # Здесь можно изменить цену или количество товара для тестирования.
     dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
     new_product = Product.new_product(dict_new_product)
     Category.add_product(category_objects[0], new_product)
@@ -39,7 +41,7 @@ def main(path, file_name):
     # Суммирование экземпляров товаров разных классов.
     new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8,
                               "зеленый", "Россия", 2)
-    # print(category_objects[0].product_objects[0] + new_lawngrass)
+    #print(category_objects[0].product_objects[0] + new_lawngrass)
 
     # Вывод атрибутов класса Catogory.
     print(f'Количество категорий товаров: {Category.category_quantity}')
@@ -49,11 +51,24 @@ def main(path, file_name):
     for product in IterProducts(category_objects[0]):
         print(product)
 
+    print('')
     dict_new_product = {"name": "Iphone 14", "description": "512GB", "price": 200000.0, "quantity": 6,
                         "color": "Белый", "capacity": 190, "model": "14", "memory": 32}
     new_product = SmartPhone.new_product(dict_new_product)
     prod = Order(new_product)
     print(prod.__str__())
+
+    # Перебор в списке категорий category_objects.
+    for category_index in IterCategory(category_objects):
+        # Расчет средней цены товара по каждой категории.
+        try:
+            avg_message = category_objects[category_index].average_price()
+        except ZeroDivisionError:
+            print(f'В категории {category_objects[category_index].name} '
+                  f'отсуствуют продукты - невозможно расcчитать среднюю цену')
+        else:
+            print(avg_message)
+
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)

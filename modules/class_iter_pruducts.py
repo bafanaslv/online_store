@@ -1,4 +1,4 @@
-# Итератор для перебора в списке продуктов в экзмпляре класса Category.
+# Итератор для перебора в списке продуктов в экземпляре класса Category.
 
 class IterProducts:
     def __init__(self, object_category):

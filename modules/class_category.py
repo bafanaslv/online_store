@@ -1,12 +1,12 @@
 from modules.class_product import Product
 from modules.class_mixin_repr import MixinRepr
-from abstract_classes import Categoryabc
+from modules.abstract_classes import Categoryabc
 
 
 class Category(Categoryabc, MixinRepr):
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
-    category_quantity - количество категорий."""
+    category_quantity - количество категорий, avg_price - средняя цена товаров данной категории."""
     name: str
     description: str
     products: list
@@ -35,14 +35,14 @@ class Category(Categoryabc, MixinRepr):
         return prod_list
 
     def add_product(self, new_product):
-        """Метод предназначен для добавление нового товара в категорию. Если наимнования товара совпадает с имеющимся
+        """Метод предназначен для добавление нового товара в категорию. Если наименования товара совпадает с имеющимся
         товаром, то увеличивается количество и при необходимости корректируется цена товара."""
+
         # new_product - экземпляр нового товара.
         found_product = self.search_product(new_product.name, self.__products)
         if found_product is None:
             # если товар не нашелся в списке, то добавляем его в список товаров текущей категории.
-            # if not isinstance(new_product, Product):
-            if type(new_product) is not type(Product):
+            if not isinstance(new_product, Product):
                 raise TypeError("Добавлять можно только объекты одного класса или его наследников.")
             self.__products.append(new_product)
             Category.product_names_quantity += 1
@@ -71,3 +71,12 @@ class Category(Categoryabc, MixinRepr):
         for product in self.__products:
             quantity_products += product.quantity
         return quantity_products
+
+    def average_price(self):
+        """ Метод предназначен для расчета средней цены товара по определенной категории."""
+        sum_price = 0
+        for prod in self.__products:
+            sum_price += prod.product_price
+            if len(self.__products) == 0:
+                raise ZeroDivisionError('В категории отсуствуют продукты - невозможно расcчитать среднюю цену !')
+        return f'Средняя цена товаров по категории {self.name}:  {round((sum_price / len(self.__products)), 2)} р.'
