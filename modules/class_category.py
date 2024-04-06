@@ -77,4 +77,4 @@ class Category(Categoryabc, MixinRepr):
         sum_price = 0
         for prod in self.__products:
             sum_price += prod.product_price
-        print(f'Средняя цена товаров по категории {self.name}:  {round((sum_price / len(self.__products)), 2)} р.')
+        return f'Средняя цена товаров по категории {self.name}:  {round((sum_price / len(self.__products)), 2)} р.'
