@@ -6,7 +6,7 @@ from abstract_classes import Categoryabc
 class Category(Categoryabc, MixinRepr):
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
     description - описание, products - список товаров по данной категории,
-    category_quantity - количество категорий."""
+    category_quantity - количество категорий, avg_price - средняя цена товаров данной категории."""
     name: str
     description: str
     products: list
@@ -71,3 +71,10 @@ class Category(Categoryabc, MixinRepr):
         for product in self.__products:
             quantity_products += product.quantity
         return quantity_products
+
+    def average_price(self):
+        """ Метод предназначен для расчета средней цены товара по определенной категории."""
+        sum_price = 0
+        for prod in self.__products:
+            sum_price += prod.product_price
+        print(f'Средняя цена товаров по категории {self.name}:  {round((sum_price / len(self.__products)), 2)} р.')

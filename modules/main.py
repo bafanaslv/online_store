@@ -23,9 +23,17 @@ def main(path, file_name):
         category_objects = create_category_objects(category_list)
 
     # Добавление нового товара в категорию.
+    # Здесь можно изменить цену или количество товара для тестирования.
     dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
-    new_product = Product.new_product(dict_new_product)
-    Category.add_product(category_objects[0], new_product)
+    try:
+        new_product = Product.new_product(dict_new_product)
+    except ValueError as message:
+        print(message)
+    else:
+        Category.add_product(category_objects[0], new_product)
+    finally:
+        print('Работа программы завершенв.')
+
 
     # Отработка геттера product класса Catofory.
     print(category_objects[0].product)
@@ -39,7 +47,7 @@ def main(path, file_name):
     # Суммирование экземпляров товаров разных классов.
     new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8,
                               "зеленый", "Россия", 2)
-    print(category_objects[0].product_objects[0] + new_lawngrass)
+    #print(category_objects[0].product_objects[0] + new_lawngrass)
 
     # Вывод атрибутов класса Catogory.
     print(f'Количество категорий товаров: {Category.category_quantity}')
@@ -55,6 +63,8 @@ def main(path, file_name):
     prod = Order(new_product)
     print(prod.__str__())
 
+    # Расчет средней цены товара по категории.
+    category_objects[0].average_price()
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
