@@ -23,12 +23,6 @@ def main(path, file_name):
     if category_list is not None:
         category_objects = create_category_objects(category_list)
 
-    # Добавление нового товара в категорию.
-    # Здесь можно изменить цену или количество товара для тестирования.
-    dict_new_product = {"name": "Iphone 16", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
-    new_product = Product.new_product(dict_new_product)
-    Category.add_product(category_objects[0], new_product)
-
     # Отработка геттера product класса Catofory.
     print(category_objects[0].product)
 
@@ -37,6 +31,11 @@ def main(path, file_name):
 
     # Суммирование экземпляров товаров одного класса.
     print(category_objects[0].product_objects[0] + category_objects[0].product_objects[1])
+
+    # Добавление нового товара в категорию.
+    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
+    new_product = Product.new_product(dict_new_product)
+    Category.add_product(category_objects[0], new_product)
 
     # Суммирование экземпляров товаров разных классов.
     new_lawngrass = LawnGrass("Трава", "Газонная", 2100.0, 8,
@@ -60,15 +59,12 @@ def main(path, file_name):
 
     # Перебор в списке категорий category_objects.
     for category_index in IterCategory(category_objects):
-        # Расчет средней цены товара по каждой категории.
-        try:
-            avg_message = category_objects[category_index].average_price()
-        except ZeroDivisionError:
-            print(f'В категории {category_objects[category_index].name} '
-                  f'отсуствуют продукты - невозможно расcчитать среднюю цену')
-        else:
-            print(avg_message)
+        print(category_objects[category_index].average_price())
 
+    # Добавление товара с нулевым количеством.
+    dict_new_product = {"name": "Iphone 16", "description": "512GB", "price": 200000.0, "quantity": 0, "color": "Белый"}
+    new_product = Product.new_product(dict_new_product)
+    Category.add_product(category_objects[0], new_product)
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
