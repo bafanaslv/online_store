@@ -25,7 +25,7 @@ def main(path, file_name):
 
     # Добавление нового товара в категорию.
     # Здесь можно изменить цену или количество товара для тестирования.
-    dict_new_product = {"name": "Iphone 15", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
+    dict_new_product = {"name": "Iphone 16", "description": "512GB", "price": 200000.0, "quantity": 6, "color": "Белый"}
     new_product = Product.new_product(dict_new_product)
     Category.add_product(category_objects[0], new_product)
 

@@ -12,8 +12,6 @@ class Product(Productabc, MixinRepr):
     color: str
 
     def __init__(self, name, description, price, quantity, color):
-        if quantity == 0:
-            raise ValueError(f'{name} - продукт с нулевым количеcтвом нельзя добавлять !')
         self.name = name
         self.description = description
         self.__price = price
