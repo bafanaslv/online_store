@@ -8,7 +8,7 @@ from modules.class_iter_pruducts import IterProducts
 from modules.class_iter_category import IterCategory
 from config import ROOT_DIR
 from ulils import load_json_file, create_category_objects
-
+from modules.class_empty_quantity import EmptyQuantity
 
 FILE = 'products.json'
 PRODUCTS_JSON_FILE = os.path.join(ROOT_DIR, 'data', FILE)
@@ -51,20 +51,36 @@ def main(path, file_name):
         print(product)
 
     print('')
-    dict_new_product = {"name": "Iphone 14", "description": "512GB", "price": 200000.0, "quantity": 6,
+    #  Добавление товара с нулевым количеством в Заказы.
+    dict_new_product = {"name": "Iphone 14", "description": "512GB", "price": 200000.0, "quantity": 0,
                         "color": "Белый", "capacity": 190, "model": "14", "memory": 32}
-    new_product = SmartPhone.new_product(dict_new_product)
-    prod = Order(new_product)
-    print(prod.__str__())
+    try:
+        new_product = SmartPhone.new_product(dict_new_product)
+    except EmptyQuantity:
+        print(f'{new_product.name}: нельзя добавить товар с нулевым количеством !')
+    else:
+        prod = Order(new_product)
+        print(prod.__str__())
+        print('Товар добавлен.')
+    finally:
+        print(f'Обработка добавления товара завершена.\n')
 
     # Перебор в списке категорий category_objects.
     for category_index in IterCategory(category_objects):
         print(category_objects[category_index].average_price())
+    print('')
 
-    # Добавление товара с нулевым количеством.
+    # Добавление товара с нулевым количеством в категорию Продукты.
     dict_new_product = {"name": "Iphone 16", "description": "512GB", "price": 200000.0, "quantity": 0, "color": "Белый"}
-    new_product = Product.new_product(dict_new_product)
-    Category.add_product(category_objects[0], new_product)
+    try:
+        new_product = Product.new_product(dict_new_product)
+    except EmptyQuantity:
+        print(f'{new_product.name}: нельзя добавить товар с нулевым количеством !')
+    else:
+        Category.add_product(category_objects[0], new_product)
+        print('Товар добавлен.')
+    finally:
+        print(f'Обработка добавления товара завершена.\n')
 
 if __name__ == '__main__':
     main(PRODUCTS_JSON_FILE, FILE)
