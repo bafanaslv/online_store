@@ -1,6 +1,6 @@
 from modules.class_mixin_repr import MixinRepr
 from modules.abstract_classes import Productabc
-from modules.class_empty_quantity import EmptyQuantity
+
 
 class Product(Productabc, MixinRepr):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
@@ -12,8 +12,6 @@ class Product(Productabc, MixinRepr):
     color: str
 
     def __init__(self, name, description, price, quantity, color):
-        if quantity == 0:
-            raise EmptyQuantity
         self.name = name
         self.description = description
         self.__price = price
