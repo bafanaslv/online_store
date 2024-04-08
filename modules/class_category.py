@@ -44,6 +44,8 @@ class Category(Categoryabc, MixinRepr):
             # если товар не нашелся в списке, то добавляем его в список товаров текущей категории.
             if not isinstance(new_product, Product):
                 raise TypeError("Добавлять можно только объекты одного класса или его наследников.")
+            if new_product.quantity == 0:
+                raise EmptyQuantity
             self.__products.append(new_product)
             Category.product_names_quantity += 1
         else:
@@ -76,8 +78,8 @@ class Category(Categoryabc, MixinRepr):
         """ Метод предназначен для расчета средней цены товара по определенной категории."""
         sum_price = sum(prod.product_price for prod in self.__products)
         try:
-            sum_price / len(self.__products)
+            result = sum_price / len(self.__products)
         except ZeroDivisionError:
             return 0
         else:
-            return f'Средняя цена товаров по категории {self.name}:  {round((sum_price / len(self.__products)), 2)} р.'
+            return f'Средняя цена товаров по категории {self.name}:  {round(result, 2)} р.'
