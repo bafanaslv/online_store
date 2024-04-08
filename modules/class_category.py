@@ -1,7 +1,7 @@
 from modules.class_product import Product
 from modules.class_mixin_repr import MixinRepr
 from modules.abstract_classes import Categoryabc
-
+from modules.class_empty_quantity import EmptyQuantity
 
 class Category(Categoryabc, MixinRepr):
     """Класс предназначен описания и поведения категорий товаров. name - наименование,
@@ -44,10 +44,16 @@ class Category(Categoryabc, MixinRepr):
             # если товар не нашелся в списке, то добавляем его в список товаров текущей категории.
             if not isinstance(new_product, Product):
                 raise TypeError("Добавлять можно только объекты одного класса или его наследников.")
-            if new_product.quantity == 0:
-                raise ValueError(f'{new_product.name} - нельзя добавить товар с нулевым количеством! !')
-            self.__products.append(new_product)
-            Category.product_names_quantity += 1
+            try:
+                self.__products.append(new_product)
+            except EmptyQuantity('Нельзя добавлять товар с нулевым количеством !') as e:
+                print(e)
+            else:
+                self.__products.append(new_product)
+                Category.product_names_quantity += 1
+                print('Товар добавлен.')
+            finally:
+                print('Обработка добавления товара завершена.')
         else:
             # если товар нашелся, то увеличиваем его количество и, при необходимости, корректируем цену.
             found_product.quantity += new_product.quantity

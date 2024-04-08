@@ -1,6 +1,6 @@
 from modules.class_mixin_repr import MixinRepr
-from abstract_classes import Productabc
-
+from modules.abstract_classes import Productabc
+from modules.class_empty_quantity import EmptyQuantity
 
 class Product(Productabc, MixinRepr):
     """Класс предназначен описания и поведения номенклатуры товаров. name - наименование,
