@@ -82,4 +82,4 @@ class Category(Categoryabc, MixinRepr):
         except ZeroDivisionError:
             return 0
         else:
-            return f'Средняя цена товаров по категории {self.name}:  {round(result, 2)} р.'
+            return round(result, 2)
